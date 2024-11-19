@@ -1,0 +1,13 @@
+{
+  "packages": {
+    "NodeJS": "C:\\Program Files\\askui GmbH\\AskUI Suite\\DependencyCache\\Links\\NodeJS",
+    "PowerShell": "C:\\Program Files\\askui GmbH\\AskUI Suite\\DependencyCache\\Links\\PowerShell",
+    "Python": "C:\\Program Files\\askui GmbH\\AskUI Suite\\DependencyCache\\Links\\Python"
+  },
+  "environmentVariables": {},
+  "credentials": {
+    "workspaceId": "48e02116-96fc-4f21-a8ab-2d07fd7b3160",
+    "token": "mNMNUrl3GA--iAxtZCvt"
+
+  }
+}
