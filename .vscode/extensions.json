@@ -1,0 +1,9 @@
+{
+    "recommendations": ["ms-vscode.live-server", "firsttris.vscode-jest-runner", "dbaeumer.vscode-eslint"]
+}
+
+/*
+ms-vscode.live-server: HTML Live Viewer for viewing annotations inside VSCode instead of, for example, having to jump out of VSCode and open it in a web browser.
+firsttris.vscode-jest-runner: Jest Runner to start single test out of the IDE.
+dbaeumer.vscode-eslint: ESLint plugin to show missing exec().
+*/

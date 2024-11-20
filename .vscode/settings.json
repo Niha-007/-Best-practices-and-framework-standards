@@ -1,0 +1,13 @@
+{
+    "livePreview.customExternalBrowser": "Default",
+    "terminal.integrated.profiles.windows":{    //Configures the askui-shell
+        "askui-shell": {    
+            "path": ["${env:ASKUI_INSTALLATION_DIRECTORY}\\Tools\\askui-shell.cmd"],
+            "icon": "robot",
+            "overrideName": true,
+            "color": "terminal.ansiMagenta",
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "askui-shell" //sets the askui-shell as default
+
+}
