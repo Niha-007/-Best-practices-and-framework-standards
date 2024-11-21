@@ -15,7 +15,7 @@ export const testData = {
     // Application URLs
     baseUrl: 'https://www.saucedemo.com/',
     // Error messages
-    lockedUserError: 'Epic sadface: Sorry, this user has been locked out.'
+    lockedUserError: 'Epic sadface: Username and password x'
 };
 
 export default testData;

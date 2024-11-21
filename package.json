@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "askui": "jest --config ./askui_example/jest.config.ts --runInBand",
-    "lint": "eslint . --ext .ts"
+    "lint": "eslint . --ext .ts",
+    "allure-generate": "allure generate",
+    "allure-serve": "allure serve"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,8 @@
     "@types/jest": "^29.5.14",
     "@typescript-eslint/eslint-plugin": "^8.14.0",
     "@typescript-eslint/parser": "^8.14.0",
+    "allure-commandline": "^2.32.0",
+    "allure-jest": "^3.0.6",
     "askui": "^0.20.10",
     "eslint": "^9.14.0",
     "eslint-plugin-import": "^2.31.0",

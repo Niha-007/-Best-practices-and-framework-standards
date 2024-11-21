@@ -14,10 +14,10 @@ export class LoginPage {
      */
     async navigateToSite(): Promise<void> { 
         await aui.execOnShell("start chrome").exec();
-        await aui.waitFor(333).exec(); //Always include proper wait conditions before starting applications
+        await aui.waitFor(333).exec();  //Always include proper wait conditions before starting applications
         await aui.type(testData.baseUrl).exec();
         await aui.pressKey('enter').exec();
-        await aui.waitUntil(aui.expect().text('Swag Labs').exists()); //Verify the application is fully loaded before running tests
+        await aui.waitUntil(aui.expect().text('Swag Labs').exists());  //Verify the application is fully loaded before running tests
     }
 
     /**

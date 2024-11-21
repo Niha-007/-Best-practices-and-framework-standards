@@ -20,21 +20,12 @@ describe('Sauce Demo Purchase Flow Tests', () => {
         inventoryPage = new InventoryPage();
         checkoutPage = new CheckoutPage();
         
-        await aui.execOnShell("start chrome").exec();
-        await aui.waitFor(1000).exec();
-        logger.info('New browser instance started');
     });
 
     afterEach(async () => {
         await aui.pressTwoKeys('alt', 'f4').exec();
         await aui.waitFor(1000).exec();
         logger.info('Browser instance closed');
-    });
-
-    afterAll(async () => {
-        await aui.pressTwoKeys('alt', 'f4').exec();
-        await aui.waitFor(1000).exec();
-        logger.info('Final browser cleanup completed');
     });
 
     it('glitch user should attempt to complete purchase with error handling', async () => {
@@ -46,7 +37,7 @@ describe('Sauce Demo Purchase Flow Tests', () => {
             process.env.commonPassword!
         );
         logger.success(' user login successful');
-
+        await aui.pressKey('escape').exec();
         await inventoryPage.completeProductSelection(testData.productName);
         logger.success('Product selection completed for problem user');
         
@@ -55,6 +46,13 @@ describe('Sauce Demo Purchase Flow Tests', () => {
             testData.checkoutInfo.lastName,
             testData.checkoutInfo.postalCode
         );
+
+        await checkoutPage.verifyEnteredValues(
+            testData.checkoutInfo.firstName,
+            testData.checkoutInfo.lastName,
+            testData.checkoutInfo.postalCode
+        );
+        logger.success('Form details filled and verified');
         await checkoutPage.clickContinue();
         await checkoutPage.clickFinish();
         logger.success('performance glitch user purchase flow completed');

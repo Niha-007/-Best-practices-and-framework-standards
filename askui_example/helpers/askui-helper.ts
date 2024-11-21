@@ -1,5 +1,5 @@
 import { UiControlClient } from 'askui';
-import { AskUIAnnotationStepReporter, AnnotationLevel} from '@askui/askui-reporters';
+import {AskUIAllureStepReporter } from '@askui/askui-reporters';
 
 // Client is necessary to use the askui API
 // eslint-disable-next-line import/no-mutable-exports
@@ -9,7 +9,7 @@ jest.setTimeout(60 * 1000 * 60);
 
 beforeAll(async () => {
   aui = await UiControlClient.build({
-    reporter: new AskUIAnnotationStepReporter(AnnotationLevel.ON_FAILURE),
+    reporter: new AskUIAllureStepReporter(),
   });
 
   await aui.connect();

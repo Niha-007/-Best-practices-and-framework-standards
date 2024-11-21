@@ -1,26 +1,35 @@
-/**
- * @fileoverview Utility for consistent error logging
- */
+import "@askui/jest-allure-circus";
+
+declare const allure: {
+    step(name: string, body?: () => void): void;
+    attachment(name: string, content: string, type: string): void;
+}
 
 export const logger = {
     error: (message: string, error?: any) => {
-        console.error('\x1b[31m%s\x1b[0m', '❌ ERROR:', message);
-        if (error) {
-            console.error('Details:', error);
-        }
-        console.error('\x1b[33m%s\x1b[0m', '📍 Stack:', new Error().stack);
+        allure.step('❌ ERROR: ' + message, () => {
+            if (error) {
+                allure.attachment('Error Details', JSON.stringify(error, null, 2), 'application/json');
+            }
+            allure.attachment('Stack Trace', new Error().stack || '', 'text/plain');
+        });
     },
 
     info: (message: string) => {
-        console.log('\x1b[36m%s\x1b[0m', '📌 INFO:', message);
+        allure.step('📌 INFO: ' + message, () => {
+            console.log(message);
+        });
     },
 
     success: (message: string) => {
-        console.log('\x1b[32m%s\x1b[0m', '✅ SUCCESS:', message);
+        allure.step('✅ SUCCESS: ' + message, () => {
+            console.log(message);
+        });
     },
 
     warning: (message: string) => {
-        console.log('\x1b[33m%s\x1b[0m', '⚠️ WARNING:', message);
+        allure.step('⚠️ WARNING: ' + message, () => {
+            console.log(message);
+        });
     }
 };
-

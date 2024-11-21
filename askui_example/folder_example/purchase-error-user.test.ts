@@ -10,6 +10,7 @@ import { testData } from '../data_input/test-data';
 import { logger } from '../logging/logger';
 import dotenv from 'dotenv';
 dotenv.config();
+
 describe('Sauce Demo Purchase Flow Tests', () => {
     let loginPage: LoginPage;
     let inventoryPage: InventoryPage;
@@ -31,11 +32,6 @@ describe('Sauce Demo Purchase Flow Tests', () => {
         logger.info('Browser instance closed');
     });
 
-    afterAll(async () => {
-        await aui.pressTwoKeys('alt', 'f4').exec();
-        await aui.waitFor(1000).exec();
-        logger.info('Final browser cleanup completed');
-    });
 
     it('Error user should attempt to complete purchase with error handling', async () => {
         logger.info('Starting problem user purchase flow test');
@@ -55,6 +51,13 @@ describe('Sauce Demo Purchase Flow Tests', () => {
             testData.checkoutInfo.lastName,
             testData.checkoutInfo.postalCode
         );
+
+        await checkoutPage.verifyEnteredValues(
+            testData.checkoutInfo.firstName,
+            testData.checkoutInfo.lastName,
+            testData.checkoutInfo.postalCode
+        );
+        logger.success('Form details filled and verified');
         await checkoutPage.clickContinue();
         await checkoutPage.clickFinish();
         logger.success('error user purchase flow completed');

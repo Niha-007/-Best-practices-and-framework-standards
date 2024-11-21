@@ -15,10 +15,6 @@ describe('Sauce Demo Purchase Flow Tests', () => {
         loginPage = new LoginPage();
         inventoryPage = new InventoryPage();
         checkoutPage = new CheckoutPage();
-        
-        await aui.execOnShell("start chrome").exec();
-        await aui.waitFor(1000).exec();
-        logger.info('New browser instance started');
     });
 
     afterEach(async () => {
@@ -27,21 +23,15 @@ describe('Sauce Demo Purchase Flow Tests', () => {
         logger.info('Browser instance closed');
     });
 
-    afterAll(async () => {
-        await aui.pressTwoKeys('alt', 'f4').exec();
-        await aui.waitFor(1000).exec();
-        logger.info('Final browser cleanup completed');
-    });
     
     it('Locked out user should not be able to login', async () => {
         logger.info('Starting locked out user test');
         
         await loginPage.navigateToSite();
         await loginPage.login(
-            process.env.lockedUser!,
+            process.env.lockedUserName!,
             process.env.commonPassword!
         );
-        
         await aui.waitUntil(aui.expect().text(testData.lockedUserError).exists());
         await aui.annotate();
         logger.success('Successfully verified locked out user cannot login');

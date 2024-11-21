@@ -4,7 +4,7 @@
  */
 
 import { aui } from "../helpers/askui-helper";
-
+import { logger } from '../logging/logger';
 export class CheckoutPage {
     // Initiates the checkout process by clicking checkout button
     
@@ -39,6 +39,24 @@ export class CheckoutPage {
         await aui.click().text('Zip/Postal Code').exec();
         await aui.type(postalCode).exec();
     }
+
+        /**
+* Validates if entered form values exist on screen
+* @param fieldType - Type of field to validate ('firstName', 'lastName', or 'postalCode')
+* @param value - Value to verify 
+* **/
+
+async verifyEnteredValues(firstName: string, lastName: string, postalCode: string): Promise<void> {
+       await aui.expect().text(firstName).exists();
+       await aui.expect().text(lastName).exists(); 
+       await aui.expect().text(postalCode).exists();
+
+       if (firstName.length === 0 || lastName.length === 0 || postalCode.length == 0 ) {
+       logger.error('checkout form details are not properly filled');
+     }
+     
+   }
+
 
     /**
      * Clicks continue button in checkout process

@@ -20,22 +20,12 @@ describe('Sauce Demo Purchase Flow Tests', () => {
         loginPage = new LoginPage();
         inventoryPage = new InventoryPage();
         checkoutPage = new CheckoutPage();
-        
-        await aui.execOnShell("start chrome").exec();
-        await aui.waitFor(1000).exec();
-        logger.info('New browser instance started');
     });
 
     afterEach(async () => {
         await aui.pressTwoKeys('alt', 'f4').exec();
         await aui.waitFor(1000).exec();
         logger.info('Browser instance closed');
-    });
-
-    afterAll(async () => {
-        await aui.pressTwoKeys('alt', 'f4').exec();
-        await aui.waitFor(1000).exec();
-        logger.info('Final browser cleanup completed');
     });
 
     it('Standard user should complete purchase successfully', async () => {

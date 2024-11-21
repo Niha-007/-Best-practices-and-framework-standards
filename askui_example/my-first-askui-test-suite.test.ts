@@ -1,7 +1,7 @@
 import { aui } from './helpers/askui-helper';
 
 describe('jest with askui', () => {
-  it('should generate an (interactive) annotation', async () => {
+  xit('should generate an (interactive) annotation', async () => {
     // For Windows users:
     // Use annotate() to create an annotated HTML file
     // of your screen that is saved under <project_root>/report

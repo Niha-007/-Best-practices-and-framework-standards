@@ -7,6 +7,7 @@ const config: Config.InitialOptions = {
   ],
   setupFilesAfterEnv: ['./helpers/askui-helper.ts'],
   testEnvironment: '@askui/jest-allure-circus',
+
 };
 
 // eslint-disable-next-line import/no-default-export
