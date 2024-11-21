@@ -141,7 +141,7 @@ Clicks on text elements during the purchase workflow.
     await aui.expect().text('checkout').exists();
    ```
 In the example code:
-  - See: [Button click with error handling](./askui_example/folder_example/purchase-performance-glitch-user.test.ts#L48)
+  - See: [Button click with error handling](./askui_example/page_workflows/inventory-page.ts#L37-L49)
   - See: [check text if exists](./askui_example/page_workflows/inventory-page.ts#L67)
 
 ### 🎯 Click Icon
@@ -194,7 +194,7 @@ Implements wait mechanisms for application loading.
   await aui.waitFor(333).exec();
   await aui.waitUntil(aui.expect().text('Swag Labs').exists());
    ```
-- See: [Wait pattern](./askui_example/folder_example/purchase-error-user.test.ts#L24)
+- See: [Wait pattern](./askui_example/folder_example/purchase-error-user.test.ts#L25)
 
 ### ⌨️ Press Keys
 Handles keyboard interactions. Use shortcut keys for faster runtime and accuracy
@@ -208,7 +208,7 @@ await aui.pressTwoKeys('alt', 'f4').exec();
 // Popup handling
 await aui.pressKey('escape').exec();
 ```
-- See: [Key press implementation](./askui_example/page_workflows/checkout-page.ts#L47) //for going to end of page
+- See: [Key press implementation](./askui_example/page_workflows/checkout-page.ts#L65) //for going to end of page
 
 ### 💭 Random Pop-Ups
 Condition-Based Execution in AskUI and Handling Random UI Changes
@@ -271,18 +271,18 @@ await aui.pressKey('escape').exec();
 from .env to env.d.ts and then call into workflows
 - Main: [Credential Configuration file](./env.d.ts)
 - Calling credentials into workflow example
-  - See: [Feed User Credentials into workflow](./askui_example/purchase-standard-problem-user.test.ts#L50-L54)
+  - See: [Feed User Credentials into workflow](./askui_example/purchase-standard-problem-user.test.ts#L35-L38) //standard username and password credentials
 
 ### Test Data Configuration
 All the test data is pulled from test-data.ts
 - Main: [Configuration file](./askui_example/data_input/test-data.ts)
-- Link: [Test data and URLs](./askui_example/data_input/test-data.ts#l6-l19)
+- Link: [Test data and URLs](./askui_example/data_input/test-data.ts#L6-L19)
 
 ### Logging System
 Using a custom logger to log different states of processes
 - Main: [Logger implementation](./askui_example/logging/logger.ts)
-  - See: [Error logging](./askui_example/logging/logger.ts#L12-L19)
-  - Link: [Success logging](./askui_example/logging/logger.ts#L25-L27)
+  - See: [Error logging](./askui_example/logging/logger.ts#L9-L16)
+  - Link: [Success logging](./askui_example/logging/logger.ts#L24-L28)
 
 ### Best Practices Summary
 
@@ -298,8 +298,7 @@ This structure ensures:
 - Proper resource cleanup
 - No cross-test contamination
 - Efficient resource management
-   - See: [Browser initialization and close](./askui_example/folder_example/purchase-error-user.test.ts#L18-33)
-   - Link: [Cleanup pattern](./askui_example/folder_example/purchase-error-user.test.ts#L34-L38)
+   - See: [Browser initialization and close](./askui_example/folder_example/purchase-error-user.test.ts#L18-L33)
 
 3. **Error Handling**
    Logging errors or different process states as needed
@@ -318,8 +317,8 @@ if (await aui.expect().text('Add to cart').exists()) {
     await aui.click().text('Remove').exec();
 }
 ```
-   - See: [Error logging](./askui_example/logging/logger.ts#L11-L32)
-   - See: [Error logging in test scaenario](./askui_example/folder_example/purchase-performance-glitch-user.test.ts#L48)
+   - See: [Error logging](./askui_example/logging/logger.ts#L9-L16)
+   - See: [Error logging in test scaenario](./askui_example/page_workflows/checkout-page.ts#L55)
 
 5. **Data Management**
     Creating a ts file where the test data can be pulled into the workflow 
@@ -353,8 +352,7 @@ export default testData;
 ```
 In code:
 
-   - See: [Test data](./askui_example/data_input/test-data.ts#L6-19)
-   - See: [Error messages](./askui_example/data_input/test-data.ts#L18)
+   - See: [Test data](./askui_example/data_input/test-data.ts#L6-L19)
 
 6. **Test Organization**
    - Two tests cases are created under folder_examples
@@ -362,8 +360,8 @@ In code:
    - To only run specific test cases - implement "it" blocks and for test omission make them as "xit"
    
 7. **How to run**
-- Use Jest Runner for individual test runs , install extension in vs code, and click on run or debug on individual workflows
-  - See: [Run/Debug](./askui_example/folder_example/purchase-performance-glitch-user.test.ts#L12-13) # after installing jest-runner
+- Use Jest Runner for individual test runs , install extension in vs code, and click on run or debug on individual workflows which appears after you install the extensions inn vscode
+  - See: [Run/Debug*](./askui_example/folder_example/purchase-performance-glitch-user.test.ts#L12-13) # after installing jest-runner, *YOU CAN ONLY VIEW IT IN VISUAL CODE
 - Make it to xit to omit test blocks
 - Run from vs terminal as askui-runproject, after you have implemented askui-shell and askui-startcontroller
 
