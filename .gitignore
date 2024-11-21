@@ -1,9 +1,9 @@
 allure-results/
 report/
 xray-report/
-
+allure-report/
 .env
-.vscode
+Java
 
 # Dangerous (may contain secrets)
 .npmrc
