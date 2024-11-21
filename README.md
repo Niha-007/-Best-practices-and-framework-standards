@@ -84,7 +84,7 @@ Follow these instructions - https://docs.askui.com/docs/suite/ADE/askui-ide-vsco
    - live-server for viewing annotations inside vscode directly 
    - jest-runner for testing a single test in IDE
    - ESLint for to show missing exec()
-   - See: [extensions.json ](.vscode\extensions.json)
+   - See: [extensions.json ](.vscode/extensions.json)
 
 ## Creating Allure-reporting folder:
 Follow these instructions - https://docs.askui.com/docs/general/Integrations/allure-reporting#step-2-install-allure-commandline
@@ -123,7 +123,7 @@ Use execOnShell() to open a application
     //Execute opening a local file
     await aui.execOnShell('C://Users//example//example//application_name').exec();
     ```
-  - for browser See in code: [open chrome ](./askui_example\folder_example\purchase-error-user.test.ts#L23) 
+  - for browser See in code: [open chrome ](./askui_example/folder_example/purchase-error-user.test.ts#L23) 
 
 Create a precondition checklist before test execution.
    - See: [Check if page is loaded](./askui_example\page_workflows\login-page.ts#L20) - Pre condition and text detection
