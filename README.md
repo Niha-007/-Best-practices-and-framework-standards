@@ -88,6 +88,7 @@ Follow these instructions - https://docs.askui.com/docs/suite/ADE/askui-ide-vsco
 
 ## Creating Allure-reporting folder:
 Follow these instructions - https://docs.askui.com/docs/general/Integrations/allure-reporting#step-2-install-allure-commandline
+We have already included allure reporter code , so you can go directly to - [ Render and View Report.]([url](https://docs.askui.com/docs/general/Integrations/allure-reporting#render-and-view-the-report-in-a-browser-java-required))
 If you cannot run the java installation cmd line, then just download sdk version from website and paste in the same environment as your project directory.
 
 ## Credentials and usage
