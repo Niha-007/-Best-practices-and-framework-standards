@@ -461,6 +461,9 @@ In code:
   - npx jest <file to execute> --config <filepath of jest.config.ts>
   Example : npx jest **./askui_example/folder_example/purchase-error-user.test.ts** --config ./askui_example/jest.config.ts 
 
+### Increase run-time :
+- If you can navigate your app by keypresses and use themfor implementation , it will speed up the execution.
+- Decrease resolution of the screen if needed
 ### Notes
 - Each link points to specific line numbers in the source code
 - Links use relative paths with './' prefix for proper repository navigation
