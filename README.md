@@ -181,16 +181,15 @@ await aui.click().text().containsText('1lKBASDF').exec();
    #### Text detection fails due to linebreak
    - for text that detects as two elements instead of one, use containsText() and match for the start of the text to find and execute command
      Example:
-     ```typepscript
+```typepscript
      await aui.click().text().containsText('Web Automation').exec();
-     ```
-    - If you just need to interact with the text and it is not important where it is exactly: Target any part of the text (that is detected by annotate()). Alternatively, 
-      use AI element.
-    Example:
-     ```typepscript
+```
+- If you just need to interact with the text and it is not important where it is exactly: Target any part of the text (that is detected by annotate()). Alternatively, use AI element.
+Example:
+    ```typepscript
      await aui.click().text("'This should not").exec();
      ```
-   #### Missing blankspaces between texts 
+#### Missing blankspaces between texts 
   - You can guard against missing blankspaces with withTextRegex():
 Example:
 ```typescript
