@@ -189,7 +189,7 @@ Example:
     ```typepscript
      await aui.click().text("'This should not").exec();
      ```
-#### Missing blankspaces between texts 
+   #### Missing blankspaces between texts 
   - You can guard against missing blankspaces with withTextRegex():
 Example:
 ```typescript
