@@ -427,7 +427,7 @@ In code:
    - Go to the folder in vs code, rename the project name
    - Now go to package.json and then with ctrl+F to see where the previous project name is present there and give it the new name
      Usually it is under script in package.json
-     ```typescript
+   ```typescript
      //previous code
      "scripts": {
     "askui": "jest --config ./askui_example/jest.config.ts --runInBand", // change the askui_example to renamed folder here
