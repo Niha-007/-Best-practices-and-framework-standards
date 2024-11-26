@@ -144,9 +144,61 @@ Clicks on text elements during the purchase workflow.
 In the example code:
   - See: [Button click with error handling](./askui_example/page_workflows/inventory-page.ts#L37-L49)
   - See: [check text if exists](./askui_example/page_workflows/inventory-page.ts#L67)
+Limitation: Sometimes dependent on resolution, font and linebreaks
+- If text detection fails, try using AI element(find example in ##click icon)
+- If there is the same text in multiple buttons that need to be clicked, use relational selector ( find example in ##Visual realtions )
 
+  #### Text In Overlay Merges with Text Below
+  Some overlays like dialogues do not have enough padding so the text under the overlay seems to be on the same line as the text inside the overlay. This leads to text- 
+  merging where you can not reliably target a specific text because the similarity score will never be reached.
+
+  You have a few options you can try depending on your use case:
+
+  - Maximize the dialogue/overlay if possible in your workflow, for example with a shortcut: This removes the underlying text.
+   - Use an AI Element as a fallback with or()
+   Example:
+
+```typescript
+await aui.click().text('So it starts')
+                 .or()
+                 .aiElement('beginning-text')
+                 .exec();
+```
+
+  - If you just need to interact with the text and it is not important where it is exactly: Target the beginning of the text
+   Example:
+```typescript
+/**
+ *  Given this text is merged from two texts:
+ *  1lKBASDF Aeb567878
+ *  First text: 1lKBASDF
+ *  Second text: Aeb567878
+ *
+ *  Target the first element
+ */
+await aui.click().text().containsText('1lKBASDF').exec();
+```
+   #### Text detection fails due to linebreak
+   - for text that detects as two elements instead of one, use containsText() and match for the start of the text to find and execute command
+     Example:
+     ```typepscript
+     await aui.click().text().containsText('Web Automation').exec();
+     ```
+    - If you just need to interact with the text and it is not important where it is exactly: Target any part of the text (that is detected by annotate()). Alternatively, 
+      use AI element.
+    Example:
+     ```typepscript
+     await aui.click().text("'This should not").exec();
+     ```
+   #### Missing blankspaces between texts 
+  - You can guard against missing blankspaces with withTextRegex():
+Example:
+```typescript
+// Use [\\s]{0,1} as a replacement for whitespace
+await aui.click().text().withTextRegex('your[\\s]{0,1}name').exec();
+```
 ### 🎯 Click Icon
-Interacts with icons and buttons throughout the application.
+Interacts with icons and buttons throughout the application. Usually AI element works in these cases
 - Wait till the icon appears and then implement the click
   - Example: 
   ```typescript
@@ -160,6 +212,17 @@ Interacts with icons and buttons throughout the application.
 
 If using AI elements ( like the above example), you need to create a new ai- element, which is done by
   - in vs terminal, - AskUI-ImportExperimentalCommands, then - AskUI-NewAIElement , snip the element needs to be clicked, name the element and save (cart1 here), then call like above example
+**Exceptions:**
+- It could be the case that the target element is not detected correctly, for example, an icon could possibly be detected as a toggle or checkbox and vice versa. In such cases, the generic element-descriptor element() could be a good option.
+  Be aware that element() alone specifies no particular property. It is recommended to be used in conjunction with a relational element descriptor:
+  Example:
+```typescript
+await aui.click().element().below().text().withText('Please Enter your Name').exec();
+```
+**For AI elements exception** :
+Images taken are supposed to have a very certain visual property.
+- An image is expected to have a color contrasting against the background.
+- An image is expected to have a rectangular shape. (rounded corner in a certain degree can be accepted)
 
 ### ⌨️ Type in Textfields
 Enters user credentials and checkout information.
@@ -359,12 +422,44 @@ In code:
    - Two tests cases are created under folder_examples
    - Two test cases are in the main workflow
    - To only run specific test cases - implement "it" blocks and for test omission make them as "xit"
+     
+   **Change the name of folders and project name directly inside vs code**
+   - Go to the folder in vs code, rename the project name
+   - Now go to package.json and then with ctrl+F to see where the previous project name is present there and give it the new name
+     Usually it is under script in package.json
+     ```typescript
+     //previous code
+     "scripts": {
+    "askui": "jest --config ./askui_example/jest.config.ts --runInBand", // change the askui_example to renamed folder here
+    "lint": "eslint . --ext .ts",
+     //other code
+   ```
    
-7. **How to run**
+8. **How to run**
 - Use Jest Runner for individual test runs , install extension in vs code, and click on run or debug on individual workflows which appears after you install the extensions inn vscode
   - See: [Run/Debug*](./askui_example/folder_example/purchase-performance-glitch-user.test.ts#L12-13) # after installing jest-runner, *YOU CAN ONLY VIEW IT IN VISUAL CODE
 - Make it to xit to omit test blocks
 - Run from vs terminal as askui-runproject, after you have implemented askui-shell and askui-startcontroller
+**Run single workflows from VS code terminal**
+- go to jest.config.ts and ake following changes
+  
+```typescript
+   ..... //code till testEnvironment: '@askui/jest-allure-circus',
+  testMatch: [
+    "**/*.test.ts",    // Add this to match any .test.ts file
+    "**/__tests__/**/*.[jt]s?(x)",
+    "**/?(*.)+(spec|test).[tj]s?(x)"
+  ],
+  moduleFileExtensions: ['ts', 'js'],
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest'
+  }
+};
+......  //rest of code
+```
+- Now from vscode run by this command
+  - npx jest <file to execute> --config <filepath of jest.config.ts>
+  Example : npx jest **./askui_example/folder_example/purchase-error-user.test.ts** --config ./askui_example/jest.config.ts 
 
 ### Notes
 - Each link points to specific line numbers in the source code
