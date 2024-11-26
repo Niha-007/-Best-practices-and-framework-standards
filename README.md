@@ -211,7 +211,9 @@ Interacts with icons and buttons throughout the application. Usually AI element 
   - Link: [implement icon implementation](./askui_example/page_workflows/inventory-page.ts#L59)
 
 If using AI elements ( like the above example), you need to create a new ai- element, which is done by
-  - in vs terminal, - AskUI-ImportExperimentalCommands, then - AskUI-NewAIElement , snip the element needs to be clicked, name the element and save (cart1 here), then call like above example
+  - in vs terminal, - AskUI-ImportExperimentalCommands, then - AskUI-NewAIElement , snip the element needs to be clicked, name the element and save (cart1 here that is highlighted in the page in green rectangle), then call like above example
+    <img width="956" alt="image" src="https://github.com/user-attachments/assets/d954cf33-c196-4258-866f-e301ece6bef0">
+
 **Exceptions:**
 - It could be the case that the target element is not detected correctly, for example, an icon could possibly be detected as a toggle or checkbox and vice versa. In such cases, the generic element-descriptor element() could be a good option.
   Be aware that element() alone specifies no particular property. It is recommended to be used in conjunction with a relational element descriptor:
