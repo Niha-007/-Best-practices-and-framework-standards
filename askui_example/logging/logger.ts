@@ -35,7 +35,7 @@ beforeAll(async () => {
 
     allure.writeEnvironmentInfo({
         APP_URL: `https://app.askui.com/workspaces/${workspaceId}/quick-start`,
-        HOSTNAME: hostname,
+        DEVICE_ID: hostname,
         WORKSPACE_ID: workspaceId,
         TEST_RUNNER: 'Jest',
         PLATFORM: os.platform(),
