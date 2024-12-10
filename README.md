@@ -1,4 +1,4 @@
-# SauceDemo Test Automation Documentation
+![image](https://github.com/user-attachments/assets/f2089839-0f43-4f5a-9251-4ba011dea7ee)![image](https://github.com/user-attachments/assets/bddf3cad-90b2-486c-af8e-adc018d7f0c2)# SauceDemo Test Automation Documentation
 
 ## Installing AskUI in your system
 refer - https://docs.askui.com/docs/general/Getting%20Started/start
@@ -91,6 +91,40 @@ Follow these instructions - https://docs.askui.com/docs/general/Integrations/all
 We have already included allure reporter code , so you can go directly to - [ Render and View Report.]([url](https://docs.askui.com/docs/general/Integrations/allure-reporting#render-and-view-the-report-in-a-browser-java-required))
 If you cannot run the java installation cmd line, then just download sdk version from website and paste in the same environment as your project directory.
 
+## Allure report environment data 
+- We have included some information in logger.ts that documents the variables that would be shown in your allure report under **Environment** section when you run the command
+** npm run allure-serve**
+  
+They include 
+
+APP_URL                   #The URL to access the AskUI workspace quick-start page. Contains a dynamic workspaceId parameter.
+DEVICE_ID                 #The hostname of the machine where the application is running.
+WORKSPACE_ID              #Unique identifier for your AskUI workspace.
+TEST_RUNNER               #Specifies the test runner being used. Currently set to Jest.
+PLATFORM                  #The operating system platform, obtained via Node.js os.platform() like - darwin, win32, linux
+OS_VERSION                #The operating system version, obtained via Node.js os.release().
+NODE_VERSION              #The version of Node.js running the application.
+TIMESTAMP                 #ISO timestamp of when the application was initialized.
+
+You can find the code snippet below which is present in logger.ts file
+```typepscript
+    beforeAll(async () => {
+    const hostname = os.hostname();
+    const workspaceId = process.env.ASKUI_WORKSPACE_ID || 'default-workspace-id';
+
+    allure.writeEnvironmentInfo({
+        APP_URL: `https://app.askui.com/workspaces/${workspaceId}/quick-start`,
+        DEVICE_ID: hostname,
+        WORKSPACE_ID: workspaceId,
+        TEST_RUNNER: 'Jest',
+        PLATFORM: os.platform(),
+        OS_VERSION: os.release(),
+        NODE_VERSION: process.version,
+        TIMESTAMP: new Date().toISOString()
+    });
+});
+```
+- Any additional variable data you wish to see can be added above under the **allure.writeEnvironmentInfo** function
 ## Credentials and usage
 Create a .env file in the project directory , where following credentials are placed
 standardUserName=standard_user                    #workflow that is successfully completed
