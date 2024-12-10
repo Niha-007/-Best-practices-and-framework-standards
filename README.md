@@ -92,7 +92,7 @@ We have already included allure reporter code , so you can go directly to - [ Re
 If you cannot run the java installation cmd line, then just download sdk version from website and paste in the same environment as your project directory.
 
 ## Allure report environment data 
-- We have included some information in logger.ts that documents the variables that would be shown in your allure report under **Environment** section when you run the command
+- We have included some information in logger.ts that documents the variables which would be shown in your allure report under **Environment** section when you run the command
 ** npm run allure-serve**
   
 They include 
