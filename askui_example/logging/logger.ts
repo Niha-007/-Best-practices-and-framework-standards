@@ -1,11 +1,7 @@
 import "@askui/jest-allure-circus";
 import * as os from 'os';
 
-declare const allure: {
-    step(name: string, body?: () => void): void;
-    attachment(name: string, content: string, type: string): void;
-    writeEnvironmentInfo(info: Record<string, string>): void;
-}
+
 
 // Generate environment info
 const hostname = `${os.hostname()}`;
