@@ -1,24 +1,6 @@
 import "@askui/jest-allure-circus";
 import * as os from 'os';
 
-
-
-// Generate environment info
-const hostname = `${os.hostname()}`;
-const workspaceId = process.env.ASKUI_WORKSPACE_ID || 'default-workspace-id';
-
-// Define environment info by creating function in allure. 
-allure.writeEnvironmentInfo({
-    APP_URL: `https://app.askui.com/workspaces/${workspaceId}/quick-start`,
-    DEVICE_ID: deviceId,
-    WORKSPACE_ID: workspaceId,
-    TEST_RUNNER: 'Jest',
-    PLATFORM: os.platform(),
-    OS_VERSION: os.release(),
-    NODE_VERSION: process.version,
-    TIMESTAMP: new Date().toISOString()
-});
-
 export const logger = {
     error: (message: string, error?: any) => {
         allure.step('❌ ERROR: ' + message, () => {
@@ -47,3 +29,18 @@ export const logger = {
         });
     }
 };
+beforeAll(async () => {
+    const hostname = os.hostname();
+    const workspaceId = process.env.ASKUI_WORKSPACE_ID || 'default-workspace-id';
+
+    allure.writeEnvironmentInfo({
+        APP_URL: `https://app.askui.com/workspaces/${workspaceId}/quick-start`,
+        HOSTNAME: hostname,
+        WORKSPACE_ID: workspaceId,
+        TEST_RUNNER: 'Jest',
+        PLATFORM: os.platform(),
+        OS_VERSION: os.release(),
+        NODE_VERSION: process.version,
+        TIMESTAMP: new Date().toISOString()
+    });
+});
