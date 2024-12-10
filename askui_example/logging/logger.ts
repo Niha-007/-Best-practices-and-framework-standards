@@ -1,9 +1,5 @@
 import "@askui/jest-allure-circus";
-
-declare const allure: {
-    step(name: string, body?: () => void): void;
-    attachment(name: string, content: string, type: string): void;
-}
+import * as os from 'os';
 
 export const logger = {
     error: (message: string, error?: any) => {
@@ -33,3 +29,18 @@ export const logger = {
         });
     }
 };
+beforeAll(async () => {
+    const hostname = os.hostname();
+    const workspaceId = process.env.ASKUI_WORKSPACE_ID || 'default-workspace-id';
+
+    allure.writeEnvironmentInfo({
+        APP_URL: `https://app.askui.com/workspaces/${workspaceId}/quick-start`,
+        HOSTNAME: hostname,
+        WORKSPACE_ID: workspaceId,
+        TEST_RUNNER: 'Jest',
+        PLATFORM: os.platform(),
+        OS_VERSION: os.release(),
+        NODE_VERSION: process.version,
+        TIMESTAMP: new Date().toISOString()
+    });
+});
