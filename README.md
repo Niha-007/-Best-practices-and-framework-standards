@@ -124,6 +124,7 @@ You can find the code snippet below which is present in logger.ts file
     });
 });
 ```
+- You can find the logger.ts file here - [askui_example/logging/logger.ts](https://github.com/askui/AskUI-Best-Practices/blob/a6694fbfe5b6397accb8f997ba85778516ece401/askui_example/logging/logger.ts)
 - Any additional variable data you wish to see can be added above under the **allure.writeEnvironmentInfo** function
 ## Credentials and usage
 Create a .env file in the project directory , where following credentials are placed
