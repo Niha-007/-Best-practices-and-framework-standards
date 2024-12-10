@@ -8,7 +8,7 @@ declare const allure: {
 }
 
 // Generate environment info
-const deviceId = `${os.hostname()}-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+const hostname = `${os.hostname()}`;
 const workspaceId = process.env.ASKUI_WORKSPACE_ID || 'default-workspace-id';
 
 // Define environment info by creating function in allure. 
