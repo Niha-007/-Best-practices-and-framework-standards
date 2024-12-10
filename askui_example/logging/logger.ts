@@ -14,8 +14,8 @@ const workspaceId = process.env.ASKUI_WORKSPACE_ID || 'default-workspace-id';
 // Define environment info by creating function in allure. 
 allure.writeEnvironmentInfo({
     APP_URL: `https://app.askui.com/workspaces/${workspaceId}/quick-start`,
-    Device_ID: deviceId,
-    Workspace_ID: workspaceId,
+    DEVICE_ID: deviceId,
+    WORKSPACE_ID: workspaceId,
     TEST_RUNNER: 'Jest',
     PLATFORM: os.platform(),
     OS_VERSION: os.release(),
