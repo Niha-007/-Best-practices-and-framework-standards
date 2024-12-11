@@ -6,8 +6,8 @@
   },
   "environmentVariables": {},
   "credentials": {
-    "workspaceId": "48e02116-96fc-4f21-a8ab-2d07fd7b3160",
-    "token": "mNMNUrl3GA--iAxtZCvt"
+    "workspaceId": "replace with your workspace ID",
+    "token": "replace with the your access token"
 
   }
 }
