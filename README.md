@@ -485,7 +485,18 @@ In code:
 - Use Jest Runner for individual test runs , install extension in vs code, and click on run or debug on individual workflows which appears after you install the extensions inn vscode
   - See: [Run/Debug*](./askui_example/folder_example/purchase-performance-glitch-user.test.ts#L12-13) # after installing jest-runner, *YOU CAN ONLY VIEW IT IN VISUAL CODE
 - Make it to xit to omit test blocks
-- Run from vs terminal as askui-runproject, after you have implemented askui-shell and askui-startcontroller
+- Run from vs terminal as
+  ```bash
+  askui-runproject
+  ```
+after you have implemented 
+```bash
+askui-shell
+```
+and 
+```bash
+askui-startcontroller
+```
 **Run single workflows from VS code terminal**
 - go to jest.config.ts and ake following changes
   
@@ -504,10 +515,34 @@ In code:
 ......  //rest of code
 ```
 - Now from vscode run by this command
+  ```bash
   - npx jest <file to execute> --config <filepath of jest.config.ts>
-  Example : npx jest **./askui_example/folder_example/purchase-error-user.test.ts** --config ./askui_example/jest.config.ts
+  ```
+  
+Example :
+```bash
+npx jest **./askui_example/folder_example/purchase-error-user.test.ts** --config ./askui_example/jest.config.ts
+```
 
-**Run**
+**Do a clean run**
+
+npm run clean is commonly used in projects to clean up build artifacts, temporary files, and output directories before a fresh build. Here's why it's important:
+- Remove old build files (dist/, build/ folders)
+- Clear cached data
+- Remove temporary files
+- Ensure clean state before new build
+In order to perform the command, initiatially go to package.json and under "scripts", write the line
+```typescript
+"scripts": {
+"clean": "rimraf report allure-report allure-results",
+.... #rest of code under scripts
+}
+```
+Download the rimraf package by going to the terminal and giving following command 
+```bash
+npm install -D rimraf
+```
+then perform the clean command
 ```bash
 npm run clean   # Removes build artifacts and temporary files
 ```
