@@ -97,10 +97,13 @@ the report would look like this -
 
 ## Allure report environment data 
 - We have included some information in logger.ts that documents the variables which would be shown in your allure report under **Environment** section when you run the command
-** npm run allure-serve**
+  ```bash
+   npm run allure-serve
+  ```
   
 They include 
 
+```
 APP_URL                   #The URL to access the AskUI workspace quick-start page. Contains a dynamic workspaceId parameter.
 DEVICE_ID                 #The hostname of the machine where the application is running.
 WORKSPACE_ID              #Unique identifier for your AskUI workspace.
@@ -109,6 +112,7 @@ PLATFORM                  #The operating system platform, obtained via Node.js o
 OS_VERSION                #The operating system version, obtained via Node.js os.release().
 NODE_VERSION              #The version of Node.js running the application.
 TIMESTAMP                 #ISO timestamp of when the application was initialized.
+```
 
 You can find the code snippet below which is present in logger.ts file
 ```typepscript
@@ -132,12 +136,14 @@ You can find the code snippet below which is present in logger.ts file
 - Any additional variable data you wish to see can be added above under the **allure.writeEnvironmentInfo** function
 ## Credentials and usage
 Create a .env file in the project directory , where following credentials are placed
+```
 standardUserName=standard_user                    #workflow that is successfully completed
 commonPassword=secret_sauce                       #password for all users
 lockedUserName=locked_user                        #doesnt allow you to login
 errorUser = error_user                            #breaks anytime for negative testing
 problemUser = problem_user                        #breaks anytime with UI changes
 glitchUser = performance_glitch_user              #breaks anytime
+```
 
 - These credentials are pulled to env.d.ts file for further usage in test implementation
 ## Best Practices for Use Cases with Live Demo
