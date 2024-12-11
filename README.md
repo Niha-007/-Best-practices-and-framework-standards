@@ -91,6 +91,10 @@ Follow these instructions - https://docs.askui.com/docs/general/Integrations/all
 We have already included allure reporter code , so you can go directly to - [ Render and View Report.]([url](https://docs.askui.com/docs/general/Integrations/allure-reporting#render-and-view-the-report-in-a-browser-java-required))
 If you cannot run the java installation cmd line, then just download sdk version from website and paste in the same environment as your project directory.
 
+the report would look like this - 
+<img width="958" alt="image" src="https://github.com/user-attachments/assets/3897036c-6917-4e3b-baeb-f64e086a9169">
+
+
 ## Allure report environment data 
 - We have included some information in logger.ts that documents the variables which would be shown in your allure report under **Environment** section when you run the command
 ** npm run allure-serve**
