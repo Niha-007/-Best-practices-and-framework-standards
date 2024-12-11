@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "clean": "rimraf report allure-report allure-results",
     "askui": "jest --config ./askui_example/jest.config.ts --runInBand",
     "lint": "eslint . --ext .ts",
     "allure-generate": "allure generate",
