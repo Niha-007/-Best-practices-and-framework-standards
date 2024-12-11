@@ -1,5 +1,3 @@
-![image](https://github.com/user-attachments/assets/f2089839-0f43-4f5a-9251-4ba011dea7ee)
-![image](https://github.com/user-attachments/assets/bddf3cad-90b2-486c-af8e-adc018d7f0c2)
 # SauceDemo Test Automation Documentation
 
 ## Installing AskUI in your system
