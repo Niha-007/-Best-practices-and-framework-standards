@@ -499,8 +499,12 @@ In code:
 ```
 - Now from vscode run by this command
   - npx jest <file to execute> --config <filepath of jest.config.ts>
-  Example : npx jest **./askui_example/folder_example/purchase-error-user.test.ts** --config ./askui_example/jest.config.ts 
+  Example : npx jest **./askui_example/folder_example/purchase-error-user.test.ts** --config ./askui_example/jest.config.ts
 
+**Run**
+```bash
+npm run clean   # Removes build artifacts and temporary files
+```
 ### Increase run-time :
 - If you can navigate your app by keypresses and use themfor implementation , it will speed up the execution.
 - Decrease resolution of the screen if needed
